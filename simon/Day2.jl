@@ -69,7 +69,7 @@ get_secret_strategy_score = function(data, score_board)
 end
 
 function main()
-    loc = "input/day2.txt"
+    loc = "./input/day2.txt"
     data = read_data(loc)
     shape_score_me = Dict([("X", 1), ("Y", 2), ("Z", 3)])
     score_board = build_scoreboard(shape_score_me)

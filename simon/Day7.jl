@@ -114,7 +114,7 @@ read_data = function(file_location)
 end
 
 function main()
-    loc = "input/day7.txt"
+    loc = "./input/day7.txt"
     tree = read_data(loc)
     add_values(tree)
     t_sum = get_sum_small_dirs(tree, 100000)

@@ -68,7 +68,7 @@ end
 
 
 function main()
-    loc = "input/day4.txt"
+    loc = "./input/day4.txt"
     data = read_data(loc)
     number_fully_contained = get_count_contained(data)
     number_overlapped = get_count_overlap(data)

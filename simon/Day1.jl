@@ -46,7 +46,7 @@ get_top = function(data_set, no_top=3)
 end
 
 function main()
-    loc = "input/day1.txt"
+    loc = "./input/day1.txt"
     no_elfs = 5
     txt_data = read_data(loc)
     elf_set = txt_to_array(txt_data)

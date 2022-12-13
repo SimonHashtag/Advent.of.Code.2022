@@ -60,7 +60,7 @@ end
 
 
 function main()
-    loc = "input/day3.txt"
+    loc = "./input/day3.txt"
     data = read_data(loc)
     alphabet = vcat(collect('a':'z'), collect('A':'Z'))
     prio_sum = get_sum(data, alphabet)

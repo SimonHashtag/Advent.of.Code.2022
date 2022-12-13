@@ -29,7 +29,7 @@ get_number_of_processes = function(buffer, marker_length)
 end
 
 function main()
-    loc = "input/day6.txt"
+    loc = "./input/day6.txt"
     buffer = read_data(loc)
     start_of_packet_marker_no = get_number_of_processes(buffer, 4)
     start_of_message_marker_no = get_number_of_processes(buffer[1:end-1], 14)

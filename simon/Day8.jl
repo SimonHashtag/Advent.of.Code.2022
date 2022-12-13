@@ -67,7 +67,7 @@ function get_highest_scenic_score(tree_map)
 end
 
 function main()
-    loc = "input/day8.txt"
+    loc = "./input/day8.txt"
     tree_map = read_data(loc)
     tree_count = count_visible(tree_map)
     max_scenic_score = get_highest_scenic_score(tree_map)

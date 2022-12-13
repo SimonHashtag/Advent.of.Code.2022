@@ -43,7 +43,7 @@ function main()
         reverse(["M", "R", "N", "J", "D", "W", "H", "Z"]),
         reverse(["S", "D", "F", "L", "Q", "M"])
         ]
-    loc = "input/day5.txt"
+    loc = "./input/day5.txt"
     data = read_data(loc)
 
     # CrateMover 9000
