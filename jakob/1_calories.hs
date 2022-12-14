@@ -1,5 +1,5 @@
 import Data.List as List
-import ListSum
+import ListActions
 --exercise 1
 run :: IO Int
 run = do

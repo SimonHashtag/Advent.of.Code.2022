@@ -1,5 +1,5 @@
 import Data.Char as Char
-import ListSum
+import ListActions
 --exercise 1
 run :: IO Int
 run = do
@@ -25,26 +25,4 @@ check2 (a:b:c:d:_) |  a <= c && b >= c = 1
                    |  c <= a && d >= a = 1
                    |  c <= b && d >= b = 1 
                    | otherwise = 0
-
-makeLists :: [String] -> [[Int]]
-makeLists str = map (\x -> map (\y -> read y :: Int) (splitter (numbersInString x))) str
-
-numbersInString :: String -> String
-numbersInString [] = []
-numbersInString (x:xs) | Char.isDigit x = x:(numbersInString xs)
-                       | otherwise = "_"++(numbersInString xs)
-
-firstSplit :: String -> String
-firstSplit ('_':xs) = ""
-firstSplit (x:xs) = x:(firstSplit xs)
-firstSplit "" = ""
-
-removeFirst :: String -> String
-removeFirst ('_':xs) = xs
-removeFirst (x:xs) = removeFirst xs
-removeFirst _ = "" 
-
-splitter :: String -> [String]
-splitter "" = []
-splitter x = [firstSplit x] ++ (splitter (removeFirst x))
 
