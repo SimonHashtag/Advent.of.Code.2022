@@ -2,7 +2,9 @@ using Pkg
 
 requirements = [
     "AbstractTrees",
-    "Combinatorics"
+    "Combinatorics",
+    "Plots",
+    "Gaston"
 ]
 
 Pkg.add(requirements)
