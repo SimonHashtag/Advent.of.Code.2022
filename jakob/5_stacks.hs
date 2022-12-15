@@ -7,6 +7,13 @@ run = do
   let xs = lines contents     
   return (moveInstructions stacks (extractInts xs))
 
+--exercise 2
+run2 :: IO [Stack]
+run2 = do
+  contents <- readFile "vals/values5.txt" 
+  let xs = lines contents     
+  return (moveInstructions2 stacks (extractInts xs))
+
 data Stack = Stack Int [Char]
 
 instance Show Stack where
@@ -56,6 +63,15 @@ moveN :: [Stack] -> [Int] -> [Stack]
 moveN sts (0:y:z:_) = sts
 moveN sts (x:y:z:xs) = moveN (move sts y z) (x-1:y:z:xs)
 
+moveNatOnce :: [Stack] -> [Int] -> [Stack]
+moveNatOnce sts (x:y:z:xs) = let stsTemp = (Stack 0 []):sts
+    in 
+      tail (moveN (moveN stsTemp (x:y:0:xs)) (x:0:z:xs))
+
 moveInstructions :: [Stack] -> [[Int]] -> [Stack]
 moveInstructions st [] = st
 moveInstructions st (x:xs) = moveInstructions (moveN st x) xs
+
+moveInstructions2 :: [Stack] -> [[Int]] -> [Stack]
+moveInstructions2 st [] = st
+moveInstructions2 st (x:xs) = moveInstructions2 (moveNatOnce st x) xs

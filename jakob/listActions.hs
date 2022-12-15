@@ -34,3 +34,16 @@ removeEmpties (x:xs) = x:(removeEmpties xs)
 
 extractInts :: [String] -> [[Int]]
 extractInts xs = (map (\x -> map (\y -> read y :: Int) (removeEmpties (splitter (numbersInString x)))) xs)
+
+revert :: [a] -> [a]
+revert [] = []
+revert (x:xs) = (revert xs) ++ [x]
+
+allDifferent :: Eq a => [a] -> Bool
+allDifferent x = if ((length x) == (length (allElems x []))) then True
+                 else False
+
+allElems :: Eq a => [a] -> [a] -> [a]
+allElems [] elems = elems
+allElems (x:xs) elems = if not (x `elem` elems) then allElems xs (x:elems)
+                        else allElems xs elems
