@@ -41,17 +41,6 @@ getTree x y ((Tree a b c):xs) = if (x == a) && (y == b) then Tree a b c
 nbr :: Tree -> Int
 nbr (Tree _ _ n) = n
 
-testTreesStrings = 
-    ["30373"
-    ,"25512"
-    ,"65332"
-    ,"33549"
-    ,"35390"]
-
-testTrees = makeTrees testTreesStrings
-
---visibleTop :: Tree -> [Tree] -> Bool
---visibleTop
 data Direction = Abv | Blw | Lft | Rgt 
 
 dirOf :: Direction -> Tree -> [Tree] -> [Tree]
