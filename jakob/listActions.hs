@@ -1,5 +1,6 @@
 module ListActions where
 import Data.Char as Char
+import Data.List as List
 --sum of int list
 listSum :: [Int] -> Int
 listSum [] = 0
@@ -39,6 +40,11 @@ revert :: [a] -> [a]
 revert [] = []
 revert (x:xs) = (revert xs) ++ [x]
 
+removeFirstN :: String -> Int -> String
+removeFirstN "" _ = ""
+removeFirstN x 0 = x 
+removeFirstN (x:xs) n = removeFirstN xs (n-1)
+
 allDifferent :: Eq a => [a] -> Bool
 allDifferent x = if ((length x) == (length (allElems x []))) then True
                  else False
@@ -47,3 +53,13 @@ allElems :: Eq a => [a] -> [a] -> [a]
 allElems [] elems = elems
 allElems (x:xs) elems = if not (x `elem` elems) then allElems xs (x:elems)
                         else allElems xs elems
+
+nTimes :: String -> Int-> String
+nTimes a b = nTimesString a b ""
+    where
+        nTimesString _ 0 x = x
+        nTimesString c n x = nTimesString c (n-1) (c ++ x)
+
+zipString :: [String] -> String
+zipString [] = ""
+zipString (x:xs) = x ++ (zipString xs)

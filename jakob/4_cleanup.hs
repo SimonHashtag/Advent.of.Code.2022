@@ -1,4 +1,3 @@
-import Data.Char as Char
 import ListActions
 --exercise 1
 run :: IO Int
