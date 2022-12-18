@@ -63,3 +63,7 @@ nTimes a b = nTimesString a b ""
 zipString :: [String] -> String
 zipString [] = ""
 zipString (x:xs) = x ++ (zipString xs)
+
+addUnique :: Eq a => a -> [a] -> [a]
+addUnique item list = if item `elem` list then list
+                      else (item:list)
