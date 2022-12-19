@@ -67,3 +67,8 @@ zipString (x:xs) = x ++ (zipString xs)
 addUnique :: Eq a => a -> [a] -> [a]
 addUnique item list = if item `elem` list then list
                       else (item:list)
+
+getNth :: [a] -> Int -> a
+getNth (x:[]) _= x
+getNth (x:xs) 1= x
+getNth (x:xs) n = getNth xs (n-1)

@@ -11,14 +11,14 @@ run = do
   return (zs, length as)
 
 --exercise 2
-run2 :: IO (([(Int, Int)], [(Int, Int)]), Int)
+run2 :: IO (([(Int, Int)]), Int)
 run2 = do
   contents <- readFile "vals/values9.txt" 
   let a = lines contents
   let b = map translate a
   let c = movementSeriesLong b ([(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)],[])
   let d = allElems (last2Elem c) []
-  return (c, length d)
+  return (d, length d)
 
 data Movement = L| R| U| D
     deriving Show
