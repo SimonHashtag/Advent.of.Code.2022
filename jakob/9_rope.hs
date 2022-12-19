@@ -1,7 +1,6 @@
 import ListActions
 import Data.Char as Char
 --exercise 1
-run :: IO (([(Int, Int)], [(Int, Int)]), Int)
 run = do
   contents <- readFile "vals/values9.txt" 
   let xs = lines contents
@@ -11,11 +10,10 @@ run = do
   return (zs, length as)
 
 --exercise 2
-run2 :: IO (([(Int, Int)]), Int)
 run2 = do
   contents <- readFile "vals/values9.txt" 
   let a = lines contents
-  let b = map translate a
+  let b = map translate (a)
   let c = movementSeriesLong b ([(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)],[])
   let d = allElems (last2Elem c) []
   return (d, length d)
@@ -40,19 +38,19 @@ move (x,y) m = case m of
     D -> (x,y - 1)
 
 follow :: ((Int,Int),(Int,Int)) -> (Int,Int)
-follow ((a,b),(x,y)) = if a>(x+1) && b == y then ((a-1,b)) 
-                       else if b>(y+1) && a == x then ((a,b-1))
-                       else if x>(a+1) && b == y then ((a+1,b))
-                       else if y>(b+1) && a == x then ((a,b+1))
-                       else if a>x && b>(y+1) then (x+1, y+1)
-                       else if a>x && b < (y-1) then (x+1, y-1)
-                       else if a>(x+1) && b>y then (x+1, y+1)
-                       else if a>(x+1) && b<y then (x+1, y-1)
-                       else if a<x && b>(y+1) then (x-1, y+1)
-                       else if a<x && b < (y-1) then (x-1, y-1)
-                       else if a<(x-1) && b>y then (x-1, y+1)
-                       else if a<(x-1) && b<y then (x-1, y-1)
-                       else (x,y)
+follow ((a,b),(x,y)) | a>(x+1) && b == y = ((a-1,b)) 
+                     | b>(y+1) && a == x = ((a,b-1))
+                     | x>(a+1) && b == y = ((a+1,b))
+                     | y>(b+1) && a == x = ((a,b+1))
+                     | a>x && b>(y+1) = (x+1, y+1)
+                     | a>x && b < (y-1) = (x+1, y-1)
+                     | a>(x+1) && b>y = (x+1, y+1)
+                     | a>(x+1) && b<y = (x+1, y-1)
+                     | a<x && b>(y+1) = (x-1, y+1)
+                     | a<x && b < (y-1) = (x-1, y-1)
+                     | a<(x-1) && b>y = (x-1, y+1)
+                     | a<(x-1) && b<y = (x-1, y-1)
+                     | True = (x,y)
 
 moveN :: Movement -> Int -> ((Int,Int),(Int,Int),[(Int,Int)]) -> ((Int,Int),(Int,Int),[(Int,Int)])
 moveN m 0 a = a
