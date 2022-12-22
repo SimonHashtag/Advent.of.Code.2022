@@ -72,3 +72,9 @@ getNth :: [a] -> Int -> a
 getNth (x:[]) _= x
 getNth (x:xs) 1= x
 getNth (x:xs) n = getNth xs (n-1)
+
+splitOn :: Eq a => a -> [a] -> [[a]]
+splitOn _ [] = []
+splitOn x xs = case break (== x) xs of
+                 (ys, []) -> [ys]
+                 (ys, _:zs) -> ys : splitOn x zs
